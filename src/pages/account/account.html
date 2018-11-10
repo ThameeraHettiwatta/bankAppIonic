@@ -1,0 +1,23 @@
+<ion-content padding center text-center>
+<ion-list>
+<ion-item>
+    <ion-label color="primary" stacked>Amount</ion-label>
+    <ion-input type="number" [(ngModel)]="developer.amount" placeholder="Amount"></ion-input>
+  </ion-item>
+  
+      <ion-item>
+          <ion-label>Deposit or withdraw</ion-label>
+          <ion-select [(ngModel)]="developer.credit">
+            <ion-option value="0">Deposit</ion-option>
+            <ion-option value="1">Withdraw</ion-option>
+          </ion-select>
+        </ion-item>
+  
+      <button ion-button full (click)="addDeveloper()">Submit</button>
+    </ion-list>
+  </ion-content>
+<ion-footer>
+    <ion-toolbar  *ngFor="let dev of developers">
+      <ion-title>Balance: {{ dev.balance }}</ion-title>
+    </ion-toolbar>
+  </ion-footer>
