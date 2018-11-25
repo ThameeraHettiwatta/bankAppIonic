@@ -7,8 +7,13 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
  
+
+var agent_id = "1";
+
 @Injectable()
+
 export class DatabaseProvider {
+  
   database: SQLiteObject;
   private databaseReady: BehaviorSubject<boolean>;
  
@@ -101,6 +106,23 @@ export class DatabaseProvider {
 
   getDatabaseState() {
     return this.databaseReady.asObservable();
+  }
+
+  getAllTransactions(){
+
+      return this.database.executeSql("SELECT * FROM transction", []).then((data) => {
+        let developers = [];
+        if (data.rows.length > 0) {
+          for (var i = 0; i < data.rows.length; i++) {
+            developers.push({ transaction_id: data.rows.item(i).transaction_id, account_no: data.rows.item(i).account_no, credit: data.rows.item(i).credit, amount: data.rows.item(i).amount, agent_Id: agent_id });
+          }
+        }
+        return developers;
+      }, err => {
+        console.log('Error: ', err);
+        return [];
+      });
+    
   }
  
 }
