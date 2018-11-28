@@ -12,12 +12,16 @@ import { DatabaseProvider } from '../providers/database/database';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { HomePage } from '../pages/home/home';
 import { AccountPage } from '../pages/account/account';
+import { GlobalProvider } from '../providers/global/global';
+import { AgentPage } from '../pages/agent/agent';
+import {Md5} from 'ts-md5/dist/md5';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, 
-     AccountPage
+     AccountPage,
+     AgentPage
   ],
   imports: [
     BrowserModule,
@@ -28,8 +32,10 @@ import { AccountPage } from '../pages/account/account';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AccountPage,
     HomePage,
-    AccountPage
+    AgentPage
+    
   ],
   providers: [
     StatusBar,
@@ -38,7 +44,9 @@ import { AccountPage } from '../pages/account/account';
     SQLite,
     Toast,
     DatabaseProvider,
-    SQLitePorter
+    SQLitePorter,
+    GlobalProvider,
+    Md5
   ]
 })
 export class AppModule {}

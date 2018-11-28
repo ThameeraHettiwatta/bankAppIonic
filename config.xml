@@ -87,4 +87,5 @@
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.5" />
     <allow-navigation href="http://10.10.25.102:8100" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-aes256-encryption" spec="^1.1.0" />
 </widget>
